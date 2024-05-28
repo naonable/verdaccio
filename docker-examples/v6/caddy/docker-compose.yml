@@ -18,7 +18,8 @@ services:
   # Caddy web server
   caddy:
     image: caddy
-    restart: always
+    networks:
+      - node-network
     ports:
       - "80:80"
       - "443:443"
