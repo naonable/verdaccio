@@ -1,0 +1,24 @@
+version: '3'
+services:
+
+  verdaccio:
+    image: verdaccio/verdaccio:4
+    restart: always
+    container_name: verdaccio-docker-local-storage-vol
+    ports:
+      - '4873:4873'
+    volumes:
+      - './storage:/verdaccio/storage'
+      - './conf:/verdaccio/conf'
+
+  # Caddy web server
+  caddy:
+    image: caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./data/caddy-data:/data
+      - ./data/caddy-config:/config

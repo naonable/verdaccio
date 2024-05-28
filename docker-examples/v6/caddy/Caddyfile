@@ -1,0 +1,4 @@
+https://doc.link520.cc { # 网站的域名信息
+        reverse_proxy http://verdaccio-docker-local-storage-vol:4873 # 反向代理
+        redir / /index.html
+}
